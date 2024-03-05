@@ -4,6 +4,8 @@
 
 This Ansible playbook automates the creation of a bash script designed to execute specific actions when an instance undergoes reboot, power-off, or termination. Additionally, it integrates with Telegram to send notifications about these events. The playbook is divided into several roles to streamline the process: pre-check, install jq, install script, and install service.
 
+![Down Event](img/photo_down.jpeg)
+
 **Roles:**
 
 1. **Pre-Check:**
@@ -19,20 +21,19 @@ This Ansible playbook automates the creation of a bash script designed to execut
    - Creates and configures the bash script responsible for executing actions during instance events (reboot, power-off, termination). It integrates with jq for JSON parsing and constructs appropriate commands to handle each event.
 
 4. **Install Service:**
-   - Sets up the service responsible for executing the bash script during instance events. It configures the service to run automatically upon system startup and monitors the specified events to trigger the corresponding actions.
+   - Sets up the service responsible for executing the bash script during instance events. It configures the service to run automatically upon system shutdown and monitors the specified events to trigger the corresponding actions.
 
 **Usage:**
 
 1. Ensure Ansible is installed on the control node.
-2. Update the inventory file with the details of target hosts.
+2. Update the hosts file with the details of target hosts.
 3. Customize playbook variables such as Telegram API token, chat ID, and any other configuration options as needed.
-4. Run the playbook using the command: `ansible-playbook playbook.yml`.
+4. Run the playbook using the command: `ansible-playbook main.yml`.
 
 **Customization:**
 
-- Modify playbook variables (`vars` section) in `playbook.yml` to match your environment and preferences.
-- Adjust the content and behavior of the bash script (`template/script.sh.j2`) to suit your requirements.
-- Update Telegram API token and chat ID in the script to enable notifications to the desired recipient.
+- Adjust the content and behavior of the bash script `roles/script/templates/down.sh.j2` to suit your requirements.
+- Update Telegram API token and chat ID in the script to enable notifications to the desired recipient at `group_vars/all/main.yml`
 
 **Note:**
 
@@ -42,12 +43,13 @@ This Ansible playbook automates the creation of a bash script designed to execut
 
 **Author:**
 
-[Your Name/Team/Organization]
+[cipulan]
 
 **Contact:**
 
-[Your Contact Information]
+[https://github.com/cipulan]
 
 **License:**
 
-[Specify the license under which this playbook is distributed, e.g., MIT License, GNU General Public License, etc.]
+[Specify the license under which this playbook is distributed, e.g., MIT License, GNU General Public License]
+[https://blog.opstree.com/2022/02/08/learn-the-hacks-for-running-custom-scripts-at-spot-termination/]
