@@ -1,0 +1,13 @@
+[linux]
+ # alma ansible_host=xxx.xxx.xxx.xxx ansible_user=almalinux
+ # debian ansible_host=xxx.xxx.xxx.xxx ansible_user=debian
+ ubuntu ansible_host=docker.pingsut.com ansible_user=ubuntu
+ # ansible_host=xxx.xxx.xxx ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/ssh-key.pem
+
+[linux:vars]
+ansible_connection=ssh
+# ansible_user="{{ ansible_distribution | lower }}"
+# ansible_user=root
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+# ansible_ssh_private_key_file=/somepath/privkey.pem
+# ansible_ssh_pass=xxxx

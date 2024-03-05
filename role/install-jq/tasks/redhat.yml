@@ -1,0 +1,9 @@
+- name: Install jq packages
+  block:
+    - name: "Install jq"
+      ansible.builtin.dnf:
+        name: jq
+        state: present
+  when: ansible_os_family == 'RedHat'
+  tags: jq
+  become: true

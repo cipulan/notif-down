@@ -1,0 +1,15 @@
+- name: Apt update & Install jq packages
+  block:
+    - name: Update apt
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+        upgrade: no
+
+    - name: "Install jq"
+      ansible.builtin.apt:
+        name: jq
+        state: present
+  when: ansible_os_family == 'Debian'
+  tags: jq
+  become: true

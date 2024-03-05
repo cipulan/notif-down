@@ -1,0 +1,11 @@
+---
+- name: Telegram Notification for Instance Restart/Poweroff/Terminated
+  hosts: linux
+  become: true
+  become_method: sudo
+  gather_facts: yes
+  roles:
+    - { role: pre_tasks, tags: [pre_task] }
+    - { role: install-jq, tags: [jq], when: install-jq == 'true' }
+    - { role: script, tags: [bash], when: script == 'true' }
+    - { role: service, tags: [service], when: service == 'true' }

@@ -1,0 +1,26 @@
+#!/bin/bash
+# Get Instance Info
+response=$(curl -s ipinfo.io)
+
+# Extract values of "ip" and "city" using jq
+ip=$(echo "$response" | jq -r '.ip')
+region=$(echo "$response" | jq -r '.region')
+org=$(echo "$response" | jq -r '.org')
+
+# Get Instance Hostname
+hostname=$(hostname)
+name=$(echo "$hostname" | cut -d'.' -f1 | tr '[:lower:]' '[:upper:]')
+
+# Telegram Notification
+chat_id=$({{ telegram_chat_id }})
+bot_id=$({{ telegram_bot_id }})
+
+# Post to telegram Group
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+        "chat_id": '"$chat_id"',
+        "text": "*[ Server : '"$name"' | Status : DOWN ]*\nHostname : *'"$hostname"'* \nIP : *'"$ip"'*\nRegion : *'"$region"'*\nProvider : '"$org"' \n*<-- Please Check -->*",
+        "parse_mode": "Markdown"
+      }' \
+  https://api.telegram.org/bot$bot_id/sendMessage
