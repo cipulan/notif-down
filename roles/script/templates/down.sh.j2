@@ -12,8 +12,8 @@ hostname=$(hostname)
 name=$(echo "$hostname" | cut -d'.' -f1 | tr '[:lower:]' '[:upper:]')
 
 # Telegram Notification
-chat_id=$({{ telegram_chat_id }})
-bot_id=$({{ telegram_bot_id }})
+chat_id={{ telegram_chat_id }}
+bot_id={{ telegram_bot_id }}
 
 # Post to telegram Group
 curl -X POST \

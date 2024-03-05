@@ -1,7 +1,7 @@
 [linux]
  # alma ansible_host=xxx.xxx.xxx.xxx ansible_user=almalinux
  # debian ansible_host=xxx.xxx.xxx.xxx ansible_user=debian
- ubuntu ansible_host=docker.pingsut.com ansible_user=ubuntu
+ ubuntu ansible_host=dockerhost.pingsut.com ansible_user=ubuntu
  # ansible_host=xxx.xxx.xxx ansible_user=ubuntu ansible_ssh_private_key_file=~/Downloads/ssh-key.pem
 
 [linux:vars]

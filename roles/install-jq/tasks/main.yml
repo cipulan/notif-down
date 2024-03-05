@@ -1,0 +1,7 @@
+- name: Include tasks for Debian based OS
+  ansible.builtin.include_tasks:
+    file: debian.yml
+
+- name: Include tasks for RedHat based OS
+  ansible.builtin.include_tasks:
+    file: redhat.yml

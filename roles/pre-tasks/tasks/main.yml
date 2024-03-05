@@ -1,5 +1,5 @@
 - name: Sanity Check | Fail if the Operating System is not supported
   fail:
     msg: "Supported Ansible Scipt for Debian & RedHat based OS only"
-  when: ansible_os_family != ('RedHat', 'Debian')
-  tags: [pre_tasks]
+  when: ansible_os_family != "RedHat" and ansible_os_family != "Debian"
+  tags: pre-tasks

@@ -5,7 +5,7 @@
   become_method: sudo
   gather_facts: yes
   roles:
-    - { role: pre_tasks, tags: [pre_task] }
-    - { role: install-jq, tags: [jq], when: install-jq == 'true' }
+    - { role: pre-tasks, tags: [pre-task] }
+    - { role: install-jq, tags: [jq], when: install_jq == 'true' }
     - { role: script, tags: [bash], when: script == 'true' }
     - { role: service, tags: [service], when: service == 'true' }
