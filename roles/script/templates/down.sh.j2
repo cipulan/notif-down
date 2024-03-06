@@ -1,6 +1,6 @@
 #!/bin/bash
 # Get Instance Info
-response=$(curl -s ipinfo.io)
+response=$(/usr/bin/curl -s ipinfo.io)
 
 # Extract values of "ip" and "city" using jq
 ip=$(echo "$response" | jq -r '.ip')
@@ -16,7 +16,7 @@ chat_id={{ telegram_chat_id }}
 bot_id={{ telegram_bot_id }}
 
 # Post to telegram Group
-curl -X POST \
+/usr/bin/curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
         "chat_id": '"$chat_id"',
