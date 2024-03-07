@@ -2,14 +2,14 @@
   block:
     - name: Create Script directory
       ansible.builtin.file:
-        path: /opt/scripts
+        path: /opt/script
         state: directory
     - name: Copy the template script file to the host
       template:
         src: templates/down.sh.j2
-        dest: /opt/scripts/down.sh
+        dest: /opt/script/down.sh
         mode: "0755"
     - name: Check Run the script
-      command: /opt/scripts/down.sh
+      command: /opt/script/down.sh
   tags: script
   become: true
